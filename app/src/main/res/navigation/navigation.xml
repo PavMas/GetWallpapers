@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/categoriesFragment">
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="com.trifsdev.wallpaper.presentation.fragments.CategoriesFragment"
+        android:label="CategoriesFragment" >
+        <action
+            android:id="@+id/categoryToPhoto"
+            app:destination="@id/photoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/photoFragment"
+        android:name="com.trifsdev.wallpaper.presentation.fragments.PhotoFragment"
+        android:label="fragment_photo"
+        tools:layout="@layout/fragment_photo" >
+        <action
+            android:id="@+id/photoToCategory"
+            app:destination="@id/categoriesFragment" />
+        <argument android:name="query"
+            app:argType="string" />
+        <action
+            android:id="@+id/photoToWallpaperPreview"
+            app:destination="@id/wallpaperPreviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/wallpaperPreviewFragment"
+        android:name="com.trifsdev.wallpaper.presentation.fragments.WallpaperPreviewFragment"
+        android:label="WallpaperPreviewFragment"
+        tools:layout="@layout/fragment_photo_preview">
+        <action
+            android:id="@+id/wallpaperPreviewToPhoto"
+            app:destination="@id/photoFragment" />
+        <argument
+            android:name="photoUrl"
+            app:argType="string" />
+        <argument
+            android:name="download"
+            app:argType="string" />
+    </fragment>
+</navigation>
